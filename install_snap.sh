@@ -6,8 +6,9 @@
 
 apt update
 apt install postgresql
-
-su - postgres psql < snap.sql
+cp snap.sql /tmp/snap.sql
+chmod 777 /tmp/snap.sql
+su - postgres -c "psql -f /tmp/snap.sql"
 
 snap install snap-store-proxy 
 # Configurar la base de datos: password Sandia4you
