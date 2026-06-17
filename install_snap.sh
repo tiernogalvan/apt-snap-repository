@@ -3,9 +3,11 @@
 
 
 # SNAP Proxy
-
 apt update
-apt install postgresql
+apt install -y snapd squashfuse fuse postgresql
+systemctl enable --now snapd.socket
+snap wait system seed.loaded
+
 cp snap.sql /tmp/snap.sql
 chmod 777 /tmp/snap.sql
 su - postgres -c "psql -f /tmp/snap.sql"
